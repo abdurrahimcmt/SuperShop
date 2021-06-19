@@ -437,3 +437,5 @@ D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Category\Edit.cshtml
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Edit.cshtml.g.cs
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Delete.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Product\Upsert.cshtml.g.cs

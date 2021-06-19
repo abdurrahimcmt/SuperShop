@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SuperShop.Data;
 using SuperShop.Models;
+using SuperShop.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,21 +32,36 @@ namespace SuperShop.Controllers
         // GET UPSERT
         public IActionResult Upsert(int ? Id)
         {
-            Product product = new Product();
+            /*IEnumerable<SelectListItem> CategoryDropDown = _db.Category.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+            ViewData["CategoryDropDown"] = CategoryDropDown;
+            Product product = new Product();*/
+            ProductVM ProductVM = new ProductVM
+            {
+                Product = new Product(),
+                CategorySelectList = _db.Category.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
             if (Id==null)
             {
-                return View(product);
+                return View(ProductVM);
             }
             else
             {
-                product = _db.Product.Find();
-                if (product==null)
+                ProductVM.Product = _db.Product.Find();
+                if (ProductVM.Product == null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    return View(product);
+                    return View(ProductVM);
                 }
             }
         }
