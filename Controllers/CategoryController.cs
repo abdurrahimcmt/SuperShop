@@ -16,7 +16,6 @@ namespace SuperShop.Controllers
         {
             _db = db;
         }
-
         public IActionResult Index()
         {
             IEnumerable<Category> objList = _db.Category;
@@ -34,9 +33,80 @@ namespace SuperShop.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            _db.Category.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _db.Category.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(obj);
+            }
+        }
+        //GET - Edit
+        public IActionResult Edit(int? Id)
+        {
+            if (Id==null || Id==0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Category.Find(Id);
+            if (obj==null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        //POST - Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Category.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(obj);
+            }
+        }
+
+        //GET - DELETE
+        public IActionResult Delete(int? Id)
+        {
+            if (Id == null || Id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Category.Find(Id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        //POST - Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? Id)
+        {
+            var obj = _db.Category.Find(Id);
+            if (obj==null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.Category.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
     }
 }

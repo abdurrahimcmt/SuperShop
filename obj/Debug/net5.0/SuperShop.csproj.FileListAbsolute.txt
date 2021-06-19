@@ -431,3 +431,9 @@ D:\Asp.net\workspace\SuperShop\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotn
 D:\Asp.net\workspace\SuperShop\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Category\Index.cshtml.g.cs
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Category\Create.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Index.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Create.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Category\Edit.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Category\Delete.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Edit.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Delete.cshtml.g.cs
