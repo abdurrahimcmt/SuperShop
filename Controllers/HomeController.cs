@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SuperShop.Data;
 using SuperShop.Models;
+using SuperShop.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,14 +16,21 @@ namespace SuperShop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public readonly ApplicationDbContext _db;
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext db)
         {
             _logger = logger;
+            _db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            HomeVM homeVM = new HomeVM()
+            {
+                products=_db.Product.Include(u=> u.Category).Include(u=> u.ApplicationType),
+                Categories=_db.Category
+            };
+            return View(homeVM);
         }
 
         public IActionResult Privacy()

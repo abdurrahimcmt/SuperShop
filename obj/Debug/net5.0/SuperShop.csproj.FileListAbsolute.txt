@@ -439,3 +439,4 @@ D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Edit
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\ApplicationType\Delete.cshtml.g.cs
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Product\Upsert.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
