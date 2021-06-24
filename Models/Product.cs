@@ -15,6 +15,9 @@ namespace SuperShop.Models
         [Required]
         public string Name { get; set; }
         public string Driscription { get; set; }
+
+        public string ShortDesc { get; set; }
+
         [Range(1,int.MaxValue)]
         public double Price { get; set; }
         public string Image { get; set; }
@@ -31,6 +34,8 @@ namespace SuperShop.Models
 
         [ForeignKey("ApplicationTypeId")]
         public virtual ApplicationType ApplicationType { get; set; }
+
+
 
 
     }
