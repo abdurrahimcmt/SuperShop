@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SuperShop.Data;
 using SuperShop.Models;
 using SuperShop.Models.ViewModels;
+using SuperShop.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -35,6 +37,13 @@ namespace SuperShop.Controllers
 
         public IActionResult Details(int ? id)
         {
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart) != null
+                && HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart).Count() > 0)
+            {
+                shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
+            }
+
             DetailsVM detailsVM = new DetailsVM()
             {
                 product = _db.Product.Include(u => u.Category).Include(u => u.ApplicationType)
@@ -42,7 +51,52 @@ namespace SuperShop.Controllers
                 ExistsInCart = false
 
             };
+
+            foreach (var item in shoppingCartList)
+            {
+                if (item.ProductId == id)
+                {
+                    detailsVM.ExistsInCart = true;
+                }
+            }
+
             return View(detailsVM);
+        }
+
+        [HttpPost,ActionName("Details")]
+        public IActionResult DetailsPost(int id)
+        {
+            // retrieve shopping card to know how many products in Shopping Cart
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart) != null
+                && HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart).Count()>0)
+            {
+                shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
+            }
+            shoppingCartList.Add(new ShoppingCart { ProductId = id });
+            HttpContext.Session.Set(WC.SessionCart, shoppingCartList);
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult RemoveFromCart(int id)
+        {
+            // retrieve shopping card to know how many products in Shopping Cart
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart) != null
+                && HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart).Count() > 0)
+            {
+                shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
+            }
+
+            var itemtoRemove = shoppingCartList.SingleOrDefault(r => r.ProductId == id);
+
+            if (itemtoRemove!=null)
+            {
+                shoppingCartList.Remove(itemtoRemove);
+            }
+            HttpContext.Session.Set(WC.SessionCart, shoppingCartList);
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()

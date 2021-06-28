@@ -2,7 +2,7 @@
 
 <div class="">
     <form method="post">
-
+        <input  asp-for="@Model.product.Id" hidden/>
         <div class="container backgroundWhite pt-4">
             <div class="card" style="border:1px solid #000000; ">
                 <div class="card-header bg-dark text-light ml-0 row container" style="border-radius: 0px;">
@@ -45,7 +45,11 @@
                             {
                                 <button asp-action="RemoveFromCart" asp-route-Id="@Model.product.Id" class="btn btn-warning form-control btn-lg" style="height:50px;">Remove From Cart</button>
                             }
-                            <button type="submit" class="btn btn-info form-control btn-lg" style="height:50px;">Add to Cart</button>
+                            else
+                            {
+                                <button type="submit" asp-route-Id="@Model.product.Id" class="btn btn-info form-control btn-lg" style="height:50px;">Add to Cart</button>
+                            }
+
                         </div>
                     </div>
                 </div>
