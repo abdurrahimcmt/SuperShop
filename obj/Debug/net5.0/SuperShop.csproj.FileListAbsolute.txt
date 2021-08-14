@@ -487,3 +487,6 @@ D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_Vali
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\obj\Debug\net5.0\Razor\Views\Cart\Summery.cshtml.g.cs
+D:\Asp.net\workspace\SuperShop\bin\Debug\net5.0\Mailjet.Client.dll
